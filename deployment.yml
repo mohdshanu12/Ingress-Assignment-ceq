@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-deployment
+  namespace: ingress-nginx 
+  labels:
+    app: django-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: django-app
+  template:
+    metadata:
+      labels:
+        app: django-app
+    spec:
+      containers:
+      - name: ms-django-app
+        image: prathamjagga/main1
+        ports:
+        - containerPort: 8000
+        # args:
+        # - "-Hii Shanu"
