@@ -1,0 +1,32 @@
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: my-service
+# spec:
+#   type: NodePort
+#   selector:
+#     app: my-app
+#   ports:
+#     - protocol: TCP
+#       port: 80
+#       targetPort: 8000
+#       nodePort: 30002
+  # type: NodePort
+  #login command in pod or go inside the container 
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+  namespace: ingress-nginx 
+  labels: 
+    app: django-app
+spec:
+  type: NodePort
+  selector:
+    app: django-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
+      #nodePort: 30002
